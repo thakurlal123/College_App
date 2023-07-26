@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "106671432625",
+    "project_id": "my-college-app-d3ce3",
+    "storage_bucket": "my-college-app-d3ce3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106671432625:android:aa087abbd60e0d5cd3d390",
+        "android_client_info": {
+          "package_name": "com.thakur.admincollageapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106671432625-tn6rr88bknno536db79kdftasnvd7s62.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQkAyjucsvLe0yTMryjPn4P84F3iEl9hc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106671432625-tn6rr88bknno536db79kdftasnvd7s62.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
