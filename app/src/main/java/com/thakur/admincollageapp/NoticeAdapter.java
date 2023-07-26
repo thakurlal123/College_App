@@ -66,9 +66,29 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
+                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Notice");
+                        reference.child(currentItem.getKey()).removeValue()
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                        notifyItemRemoved(position);
                     }
                 }
                 );
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
 
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Notice");
                 reference.child(currentItem.getKey()).removeValue()
@@ -86,6 +106,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
                 notifyItemRemoved(position);
             }
         });
+
 
     }
 
