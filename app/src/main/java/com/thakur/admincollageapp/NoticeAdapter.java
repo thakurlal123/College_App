@@ -88,7 +88,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
-                })
+                });
 
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Notice");
                 reference.child(currentItem.getKey()).removeValue()
