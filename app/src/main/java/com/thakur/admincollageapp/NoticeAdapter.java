@@ -42,7 +42,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoticeViewAdapter holder, int position) {
+    public void onBindViewHolder(@NonNull NoticeViewAdapter holder,  int position ) {
 
         NoticeData currentItem = list.get(position);
 
@@ -85,25 +85,21 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
                 );
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        dialogInterface.cancel();
 
                     }
                 });
+                AlertDialog dialog=null;
+                try {
+                    dialog = builder.create();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (dialog!= null)
+                    dialog.show();
 
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Notice");
-                reference.child(currentItem.getKey()).removeValue()
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                notifyItemRemoved(position);
+
             }
         });
 
